@@ -129,18 +129,22 @@ def stereo_depth_map(rectified_pair, box, box_bool):
     # print(box)
     if box_bool == True:
         # print(type(box))
-        x1, y1, x2, y2 = box[0], box[1], box[2], box[3]
-        # print(x1)
-        # print(y1)
-        rect = disparity_color[y1:y1+y2, x1:x1+x2]
-        # rect = disparity_color[0:3, 0:5]
-        depth_value = rect.mean()
-        print(rect)
-        if depth_value > 80:
-            print('move forward')
-        else:
-            print('move backward')
-
+        try:
+            x1, y1, x2, y2 = box[0], box[1], box[2], box[3]
+            # print(x1)
+            # print(y1)
+            rect = disparity_color[y1:y1+y2, x1:x1+x2]
+            # rect = disparity_color[0:3, 0:5]
+            depth_value = rect.mean()
+            print(rect)
+            if depth_value > 80:
+                print('move forward')
+            else:
+                print('move backward')
+        except TypeError:
+            print("No object")
+            box_bool == False
+            pass
 
 
     # box_list = box.values.tolist()
