@@ -82,18 +82,21 @@ calibration = StereoCalibration(input_folder='calib_result')
 
 
 
-#### removed to no show image  ###
+
 # cv2.imshow("crop",crop)
 #cv2.waitKey(1)
-##################################
 
-# Initialize interface windows 
-cv2.namedWindow("Image")
-cv2.moveWindow("Image", 50,100)
-cv2.namedWindow("left")
-cv2.moveWindow("left", 450,100)
-cv2.namedWindow("right")
-cv2.moveWindow("right", 850,100)
+
+
+#### removed to no show image  ###
+# # Initialize interface windows 
+# cv2.namedWindow("Image")
+# cv2.moveWindow("Image", 50,100)
+# cv2.namedWindow("left")
+# cv2.moveWindow("left", 450,100)
+# cv2.namedWindow("right")
+# cv2.moveWindow("right", 850,100)
+##################################
 
 
 disparity = np.zeros((img_width, img_height), np.uint8)
@@ -132,7 +135,7 @@ def stereo_depth_map(rectified_pair, box, box_bool):
     disparity_fixtype = cv2.convertScaleAbs(disparity_grayscale, alpha=(255.0/65535.0))
     disparity_color = cv2.applyColorMap(disparity_fixtype, cv2.COLORMAP_JET)
     cv2.rectangle(disparity_color,box,color=(0,255,0),thickness=2)
-    print('box mean:')
+    
     # print(box)
     if box_bool == True:
         # print(type(box))
@@ -143,7 +146,7 @@ def stereo_depth_map(rectified_pair, box, box_bool):
             rect = disparity_color[y1:y1+y2, x1:x1+x2]
             # rect = disparity_color[0:3, 0:5]
             depth_value = rect.mean()
-            print(rect)
+            print('box mean:', depth_value)
             if depth_value > 80:
                 print('move forward')
             else:
@@ -222,8 +225,8 @@ while True:
 
 
     #### removed to no show image  ###
-    cv2.imshow("crop",crop)
-    cv2.waitKey(1)
+    # cv2.imshow("crop",crop)
+    # cv2.waitKey(1)
     ##################################
 
     disparity = stereo_depth_map(rectified_pair, box, box_bool)
@@ -232,8 +235,8 @@ while True:
     # show the frame
     
     #### removed to no show image  ###
-    cv2.imshow("left", imgLeft)
-    cv2.imshow("right", imgRight)
+    # cv2.imshow("left", imgLeft)
+    # cv2.imshow("right", imgRight)
     # ##################################    
 
     t2 = datetime.now()
