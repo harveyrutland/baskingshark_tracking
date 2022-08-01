@@ -80,6 +80,13 @@ print ("Scaled image resolution: "+str(img_width)+" x "+str(img_height))
 print('Read calibration data and rectifying stereo pair...')
 calibration = StereoCalibration(input_folder='calib_result')
 
+
+
+#### removed to no show image  ###
+    # cv2.imshow("crop",crop)
+    # cv2.waitKey(1)
+##################################
+
 # Initialize interface windows
 # cv2.namedWindow("Image")
 # cv2.moveWindow("Image", 50,100)
@@ -212,8 +219,13 @@ while True:
    
     result, objectInfo, box = getObjects(crop,0.45,0.2, objects=['cup'])
     #print(objectInfo)
-    cv2.imshow("crop",crop)
-    cv2.waitKey(1)
+
+
+    #### removed to no show image  ###
+    # cv2.imshow("crop",crop)
+    # cv2.waitKey(1)
+    ##################################
+
     disparity = stereo_depth_map(rectified_pair, box, box_bool)
     box_bool = True
 
