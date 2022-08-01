@@ -83,17 +83,17 @@ calibration = StereoCalibration(input_folder='calib_result')
 
 
 #### removed to no show image  ###
-    # cv2.imshow("crop",crop)
-    # cv2.waitKey(1)
+# cv2.imshow("crop",crop)
+#cv2.waitKey(1)
 ##################################
 
-# Initialize interface windows
-# cv2.namedWindow("Image")
-# cv2.moveWindow("Image", 50,100)
-# cv2.namedWindow("left")
-# cv2.moveWindow("left", 450,100)
-# cv2.namedWindow("right")
-# cv2.moveWindow("right", 850,100)
+# Initialize interface windows 
+cv2.namedWindow("Image")
+cv2.moveWindow("Image", 50,100)
+cv2.namedWindow("left")
+cv2.moveWindow("left", 450,100)
+cv2.namedWindow("right")
+cv2.moveWindow("right", 850,100)
 
 
 disparity = np.zeros((img_width, img_height), np.uint8)
@@ -157,7 +157,7 @@ def stereo_depth_map(rectified_pair, box, box_bool):
     # box_list = box.values.tolist()
     # print(type(box_list))
 
-    # cv2.imshow("Image", disparity_color)
+    cv2.imshow("Image", disparity_color)
     key = cv2.waitKey(1) & 0xFF   
     if key == ord("q"):
         quit();
@@ -222,8 +222,8 @@ while True:
 
 
     #### removed to no show image  ###
-    # cv2.imshow("crop",crop)
-    # cv2.waitKey(1)
+    cv2.imshow("crop",crop)
+    cv2.waitKey(1)
     ##################################
 
     disparity = stereo_depth_map(rectified_pair, box, box_bool)
@@ -232,8 +232,8 @@ while True:
     # show the frame
     
     #### removed to no show image  ###
-    # cv2.imshow("left", imgLeft)
-    # cv2.imshow("right", imgRight)
+    cv2.imshow("left", imgLeft)
+    cv2.imshow("right", imgRight)
     # ##################################    
 
     t2 = datetime.now()
