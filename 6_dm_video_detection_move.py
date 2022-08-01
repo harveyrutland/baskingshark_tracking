@@ -231,8 +231,10 @@ while True:
 
     # show the frame
     
-    cv2.imshow("left", imgLeft)
-    cv2.imshow("right", imgRight)    
+    #### removed to no show image  ###
+    # cv2.imshow("left", imgLeft)
+    # cv2.imshow("right", imgRight)
+    # ##################################    
 
     t2 = datetime.now()
     # print ("DM build time: " + str(t2-t1))
