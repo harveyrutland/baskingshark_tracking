@@ -159,8 +159,13 @@ def stereo_depth_map(rectified_pair, box, box_bool):
 
     # box_list = box.values.tolist()
     # print(type(box_list))
+    
 
-    cv2.imshow("Image", disparity_color)
+    #### removed to no show image  ####
+    #cv2.imshow("Image", disparity_color)
+    ###################################
+
+
     key = cv2.waitKey(1) & 0xFF   
     if key == ord("q"):
         quit();
