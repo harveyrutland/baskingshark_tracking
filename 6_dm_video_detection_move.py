@@ -145,10 +145,18 @@ def stereo_depth_map(rectified_pair, box, box_bool):
             # print(y1)
             box_centre = (x1 + x2)/2, (y1 + y2)/2
             print(box_centre)
+            if box_centre < 80:
+                print('move left')
+            elif box_centre > 220:
+                print('move_right')
+            else:
+                print('move forward')
+
             rect = disparity_color[y1:y1+y2, x1:x1+x2]
             #make change to not include colour blue
             # rect = disparity_color[0:3, 0:5]
             depth_value = rect.mean()
+            
             print('box mean:', depth_value)
             if depth_value > 80:
                 print('move forward')
