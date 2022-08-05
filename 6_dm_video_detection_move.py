@@ -29,7 +29,8 @@ with open(classFile,"rt") as f:
 # weightsPath = "frozen_inference_graph.pb"
 # net = cv2.dnn_DetectionModel(weightsPath,configPath)
 
-net = cv2.dnn.readNetFromDarknet("custom-yolov4-tiny-detector.cfg","custom-yolov4-tiny-detector_best.weights")
+# net = cv2.dnn.readNetFromDarknet("custom-yolov4-tiny-detector.cfg","custom-yolov4-tiny-detector_best.weights")
+net = cv2.dnn_DetectionModel("custom-yolov4-tiny-detector_best.weights","custom-yolov4-tiny-detector.cfg")
 
 net.setInputSize(320,320)
 net.setInputScale(1.0/ 127.5)
