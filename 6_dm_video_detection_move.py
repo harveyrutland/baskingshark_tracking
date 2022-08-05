@@ -30,7 +30,7 @@ with open(classFile,"rt") as f:
 # net = cv2.dnn_DetectionModel(weightsPath,configPath)
 
 # net = cv2.dnn.readNetFromDarknet("custom-yolov4-tiny-detector.cfg","custom-yolov4-tiny-detector_best.weights")
-net = cv2.dnn.readNetFromDarknet("ustom-yolov4-tiny-detector.cfg","/content/custom-yolov4- tiny-detector_best.weights")
+net = cv2.dnn.readNetFromDarknet("custom-yolov4-tiny-detector.cfg","custom-yolov4- tiny-detector_best.weights")
 
 # net.setInputSize(320,320)
 # net.setInputScale(1.0/ 127.5)
