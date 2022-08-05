@@ -25,17 +25,20 @@ classFile = "coco.names"
 with open(classFile,"rt") as f:
     classNames = f.read().rstrip("\n").split("\n")
 
-# configPath = "ssd_mobilenet_v3_large_coco_2020_01_14.pbtxt"
-# weightsPath = "frozen_inference_graph.pb"
-# net = cv2.dnn_DetectionModel(weightsPath,configPath)
+configPath = "ssd_mobilenet_v3_large_coco_2020_01_14.pbtxt"
+weightsPath = "frozen_inference_graph.pb"
+net = cv2.dnn_DetectionModel(weightsPath,configPath)
+
 
 # net = cv2.dnn.readNetFromDarknet("custom-yolov4-tiny-detector.cfg","custom-yolov4-tiny-detector_best.weights")
-net = cv2.dnn.readNetFromDarknet("custom-yolov4-tiny-detector.cfg","custom-yolov4-tiny-detector_best.weights")
+# net.setPreferableBackend(cv2.dnn.DNN_BACKEND_OPENCV)
+# net.setPreferableTarget(cv2.dnn.DNN_TARGET_CPU)
 
-# net.setInputSize(320,320)
-# net.setInputScale(1.0/ 127.5)
-# net.setInputMean((127.5, 127.5, 127.5))
-# net.setInputSwapRB(True)
+
+net.setInputSize(320,320)
+net.setInputScale(1.0/ 127.5)
+net.setInputMean((127.5, 127.5, 127.5))
+net.setInputSwapRB(True)
 
 
 
@@ -240,7 +243,7 @@ while True:
     # cv2.imshow("crop",crop)
  
    
-    result, objectInfo, box = getObjects(crop,0.45,0.2, objects=['head'])
+    result, objectInfo, box = getObjects(crop,0.45,0.2, objects=['cup'])
     #print(objectInfo)
 
 
