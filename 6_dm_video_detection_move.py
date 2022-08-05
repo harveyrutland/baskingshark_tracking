@@ -25,9 +25,12 @@ classFile = "coco.names"
 with open(classFile,"rt") as f:
     classNames = f.read().rstrip("\n").split("\n")
 
-configPath = "ssd_mobilenet_v3_large_coco_2020_01_14.pbtxt"
-weightsPath = "frozen_inference_graph.pb"
-net = cv2.dnn_DetectionModel(weightsPath,configPath)
+# configPath = "ssd_mobilenet_v3_large_coco_2020_01_14.pbtxt"
+# weightsPath = "frozen_inference_graph.pb"
+# net = cv2.dnn_DetectionModel(weightsPath,configPath)
+
+net = cv2.dnn.readNetFromDarknet("custom-yolov4-tiny-detector.cfg","custom-yolov4-tiny-detector_best.weights")
+
 net.setInputSize(320,320)
 net.setInputScale(1.0/ 127.5)
 net.setInputMean((127.5, 127.5, 127.5))
