@@ -110,6 +110,7 @@ cv2.moveWindow("right", 850,100)
 disparity = np.zeros((img_width, img_height), np.uint8)
 sbm = cv2.StereoBM_create(numDisparities=0, blockSize=21)
 def getObjects(img, thres, nms, draw=True, objects=[]):
+    cv2.imshow("img", img)
     classIds, confs, bbox = net.detect(img, confThreshold=0.5)
     #print(classIds,bbox)
     if len(objects) == 0: objects = classNames
