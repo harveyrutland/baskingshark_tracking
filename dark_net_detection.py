@@ -1,5 +1,5 @@
 import cv2 as cv
-import argparse as args 
+import argparse 
 import sys
 import numpy as np
 import os.path
