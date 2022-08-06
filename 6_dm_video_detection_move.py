@@ -25,13 +25,9 @@ classFile = "coco.names"
 with open(classFile,"rt") as f:
     classNames = f.read().rstrip("\n").split("\n")
 
-<<<<<<< HEAD
 configPath = "Workers_label_map.pbtxt"
 weightsPath = "frozen_inference_graph_hardhat.pb"
-=======
-configPath = "Workers_label_map.pbtx"
-weightsPath = "frozen_inference_graph(1).pb"
->>>>>>> ff550b2fec451949949ead9b704e896df8655f28
+
 net = cv2.dnn_DetectionModel(weightsPath,configPath)
 
 
