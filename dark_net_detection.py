@@ -85,8 +85,8 @@ with open(classesFile, 'rt') as f:
     classes = f.read().rstrip('\n').split('\n')
 
 # Give the configuration and weight files for the model and load the network using them.
-modelConfiguration = "yolov3.cfg";
-modelWeights = "yolov3.weights";
+modelConfiguration = "custom-yolov4-tiny-detector.cfg";
+modelWeights = "custom-yolov4-tiny-detector_best.weights";
 
 net = cv.dnn.readNetFromDarknet(modelConfiguration, modelWeights)
 net.setPreferableBackend(cv.dnn.DNN_BACKEND_OPENCV)
