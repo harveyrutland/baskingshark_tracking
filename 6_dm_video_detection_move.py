@@ -25,9 +25,19 @@ classFile = "coco.names"
 with open(classFile,"rt") as f:
     classNames = f.read().rstrip("\n").split("\n")
 
-configPath = "ssd_mobilenet_v3_large_coco_2020_01_14.pbtxt"
-weightsPath = "frozen_inference_graph.pb"
+<<<<<<< HEAD
+<<<<<<< HEAD
+configPath = "Workers_label_map.pbtxt"
+weightsPath = "frozen_inference_graph_hardhat.pb"
+=======
+configPath = "Workers_label_map.pbtx"
+weightsPath = "frozen_inference_graph(1).pb"
+>>>>>>> ff550b2fec451949949ead9b704e896df8655f28
+=======
+configPath = "Workers_label_map.pbtxt"
+weightsPath = "frozen_inference_graph_hardhat.pb"
 
+>>>>>>> parent of d0ee697... again
 net = cv2.dnn_DetectionModel(weightsPath,configPath)
 
 
@@ -244,7 +254,11 @@ while True:
     # cv2.imshow("crop",crop)
  
    
-    result, objectInfo, box = getObjects(crop,0.2,0.2, objects=['cup'])
+<<<<<<< HEAD
+    result, objectInfo, box = getObjects(crop,0.45,0.2, objects=['cup'])
+=======
+    result, objectInfo, box = getObjects(crop,0.2,0.2, objects=['helmet'])
+>>>>>>> parent of d0ee697... again
     #print(objectInfo)
 
 
