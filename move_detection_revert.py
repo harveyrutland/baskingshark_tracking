@@ -227,7 +227,7 @@ while True:
     # cv2.imshow("crop",crop)
  
    
-    result, objectInfo, box = getObjects(crop,0.45,0.2, objects=['cup'])
+    result, objectInfo, box = getObjects(crop,0.3,0.2, objects=['cup'])
     #print(objectInfo)
 
 
