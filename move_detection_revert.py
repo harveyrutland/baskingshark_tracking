@@ -83,8 +83,8 @@ calibration = StereoCalibration(input_folder='calib_result')
 
 
 
-cv2.imshow("crop",crop)
-cv2.waitKey(1)
+#cv2.imshow("crop",crop)
+#cv2.waitKey(1)
 
 
 
