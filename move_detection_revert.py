@@ -80,13 +80,23 @@ print ("Scaled image resolution: "+str(img_width)+" x "+str(img_height))
 print('Read calibration data and rectifying stereo pair...')
 calibration = StereoCalibration(input_folder='calib_result')
 
-# Initialize interface windows
-cv2.namedWindow("Image")
-cv2.moveWindow("Image", 50,100)
-cv2.namedWindow("left")
-cv2.moveWindow("left", 450,100)
-cv2.namedWindow("right")
-cv2.moveWindow("right", 850,100)
+
+
+
+# cv2.imshow("crop",crop)
+#cv2.waitKey(1)
+
+
+
+#### removed to no show image  ###
+# # Initialize interface windows 
+# cv2.namedWindow("Image")
+# cv2.moveWindow("Image", 50,100)
+# cv2.namedWindow("left")
+# cv2.moveWindow("left", 450,100)
+# cv2.namedWindow("right")
+# cv2.moveWindow("right", 850,100)
+##################################
 
 
 disparity = np.zeros((img_width, img_height), np.uint8)
@@ -98,7 +108,7 @@ def getObjects(img, thres, nms, draw=True, objects=[]):
     global object_box
     objectInfo =[]
     if len(classIds) != 0:
-
+        
         for classId, confidence,box in zip(classIds.flatten(),confs.flatten(),bbox):
             className = classNames[classId - 1]
             if className in objects:
@@ -110,8 +120,8 @@ def getObjects(img, thres, nms, draw=True, objects=[]):
                     cv2.putText(img,str(round(confidence*100,2)),(box[0]+200,box[1]+30),
                     cv2.FONT_HERSHEY_COMPLEX,1,(0,255,0),2)
                     object_box = box
-
-
+                   
+                    
 
     return img,objectInfo,object_box
 
@@ -125,28 +135,39 @@ def stereo_depth_map(rectified_pair, box, box_bool):
     disparity_fixtype = cv2.convertScaleAbs(disparity_grayscale, alpha=(255.0/65535.0))
     disparity_color = cv2.applyColorMap(disparity_fixtype, cv2.COLORMAP_JET)
     cv2.rectangle(disparity_color,box,color=(0,255,0),thickness=2)
-    print('box mean:')
+    
     # print(box)
     if box_bool == True:
         # print(type(box))
-        x1, y1, x2, y2 = box[0], box[1], box[2], box[3]
-        # print(x1)
-        # print(y1)
-        rect = disparity_color[y1:y1+y2, x1:x1+x2]
-        # rect = disparity_color[0:3, 0:5]
-        depth_value = rect.mean()
-        print(rect)
-        if depth_value > 80:
-            print('move forward')
-        else:
-            print('move backward')
-
+        try:
+            x1, y1, x2, y2 = box[0], box[1], box[2], box[3]
+            # print(x1)
+            # print(y1)
+            box_centre = (x1 + x2), (y1 + y2)
+            print(box_centre)
+            rect = disparity_color[y1:y1+y2, x1:x1+x2]
+            # rect = disparity_color[0:3, 0:5]
+            depth_value = rect.mean()
+            print('box mean:', depth_value)
+            if depth_value > 80:
+                print('move forward')
+            else:
+                print('move backward')
+        except TypeError:
+            print("No object")
+            box_bool == False
+            pass
 
 
     # box_list = box.values.tolist()
     # print(type(box_list))
+    
 
-    cv2.imshow("Image", disparity_color)
+    #### removed to no show image  ####
+    #cv2.imshow("Image", disparity_color)
+    ###################################
+
+
     key = cv2.waitKey(1) & 0xFF   
     if key == ord("q"):
         quit();
@@ -195,8 +216,8 @@ while True:
     imgLeft = pair_img [0:img_height,0:int(img_width/2)] #Y+H and X+W
     imgRight = pair_img [0:img_height,int(img_width/2):img_width] #Y+H and X+W
     rectified_pair = calibration.rectify((imgLeft, imgRight))
-
-
+    
+   
     imgLeft2 = pair_img2 [0:img_height,0:int(img_width/2)] #Y+H and X+W
     # print(img_width/2, img_height)
     # crop = imgLeft2[0:320, 0:320]
@@ -204,19 +225,26 @@ while True:
     # print('this is crop')
     # print(crop.shape)
     # cv2.imshow("crop",crop)
-
-
+ 
+   
     result, objectInfo, box = getObjects(crop,0.45,0.2, objects=['cup'])
     #print(objectInfo)
-    cv2.imshow("crop",crop)
-    cv2.waitKey(1)
+
+
+    #### removed to no show image  ###
+    # cv2.imshow("crop",crop)
+    # cv2.waitKey(1)
+    ##################################
+
     disparity = stereo_depth_map(rectified_pair, box, box_bool)
     box_bool = True
 
     # show the frame
-
-    cv2.imshow("left", imgLeft)
-    cv2.imshow("right", imgRight)    
+    
+    #### removed to no show image  ###
+    # cv2.imshow("left", imgLeft)
+    # cv2.imshow("right", imgRight)
+    # ##################################    
 
     t2 = datetime.now()
     # print ("DM build time: " + str(t2-t1))
