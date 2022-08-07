@@ -164,7 +164,7 @@ def stereo_depth_map(rectified_pair, box, box_bool):
     
 
     #### removed to no show image  ####
-    #cv2.imshow("Image", disparity_color)
+    cv2.imshow("Image", disparity_color)
     ###################################
 
 
