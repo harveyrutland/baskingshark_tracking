@@ -83,19 +83,19 @@ calibration = StereoCalibration(input_folder='calib_result')
 
 
 
-# cv2.imshow("crop",crop)
-#cv2.waitKey(1)
+cv2.imshow("crop",crop)
+cv2.waitKey(1)
 
 
 
 #### removed to no show image  ###
 # # Initialize interface windows 
-# cv2.namedWindow("Image")
-# cv2.moveWindow("Image", 50,100)
-# cv2.namedWindow("left")
-# cv2.moveWindow("left", 450,100)
-# cv2.namedWindow("right")
-# cv2.moveWindow("right", 850,100)
+cv2.namedWindow("Image")
+cv2.moveWindow("Image", 50,100)
+cv2.namedWindow("left")
+cv2.moveWindow("left", 450,100)
+cv2.namedWindow("right")
+cv2.moveWindow("right", 850,100)
 ##################################
 
 
@@ -232,8 +232,8 @@ while True:
 
 
     #### removed to no show image  ###
-    # cv2.imshow("crop",crop)
-    # cv2.waitKey(1)
+    cv2.imshow("crop",crop)
+    cv2.waitKey(1)
     ##################################
 
     disparity = stereo_depth_map(rectified_pair, box, box_bool)
@@ -242,8 +242,8 @@ while True:
     # show the frame
     
     #### removed to no show image  ###
-    # cv2.imshow("left", imgLeft)
-    # cv2.imshow("right", imgRight)
+    cv2.imshow("left", imgLeft)
+    cv2.imshow("right", imgRight)
     # ##################################    
 
     t2 = datetime.now()
